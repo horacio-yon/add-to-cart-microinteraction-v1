@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add to Cart Microinteraction Pro - Codea con Horacio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Layout para Shorts / Reels (9:16) -->
+  <div class="viewport-9-16">
+
+    <!-- Watermark Codea con Horacio -->
+    <div class="watermark">
+      <span class="brand">Codea con Horacio</span>
+      <span class="tagline">Microinteracción UI • Vanilla JS</span>
+    </div>
+
+    <!-- Escena Central: Tarjeta E-Commerce Premium -->
+    <div class="scene">
+      <div class="product-card">
+
+        <!-- Display del Producto -->
+        <div class="product-display">
+          <div class="product-box" id="productBox">
+            <div class="box-face">
+              <div class="box-ribbon-v"></div>
+              <div class="box-ribbon-h"></div>
+              <div class="box-glow-tag"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Información del Producto -->
+        <div class="product-info">
+          <h2 class="product-title">Pro UI Kit 2026</h2>
+          <p class="product-price">$49.00 USD</p>
+        </div>
+
+        <!-- Botón Principal Add to Cart -->
+        <button class="cart-btn" id="cartBtn" aria-label="Add to cart button">
+
+          <!-- Anillo de Aura de Confirmación -->
+          <div class="aura-ring"></div>
+
+          <!-- Contenido Flex del Botón -->
+          <div class="btn-content">
+
+            <!-- Carrito SVG -->
+            <div class="cart-icon-wrapper" id="cartWrapper">
+
+              <!-- Flotante "+1" -->
+              <div class="floating-plus-one" id="floatingPlus">+1</div>
+
+              <!-- Badge Contador Circular -->
+              <div class="cart-badge" id="cartBadge">1</div>
+
+              <!-- Destello de Impacto -->
+              <div class="impact-glow" id="impactGlow"></div>
+
+              <svg class="cart-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <clipPath id="cart-basket-clip">
+                    <path d="M 5,-6 L 38,-6 L 38,11 L 34,11 L 29,25 L 12,25 L 8,11 L 5,11 Z" />
+                  </clipPath>
+                </defs>
+
+                <!-- Paquetes: uno nuevo por cada producto agregado -->
+                <g clip-path="url(#cart-basket-clip)">
+                  <g class="pkg"><rect x="9" y="19" width="10" height="7" rx="1" fill="#f472b6"/><path d="M 14,19 L 14,26" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/></g>
+                  <g class="pkg"><rect x="18" y="18" width="12" height="8" rx="1" fill="#fbbf24"/><path d="M 24,18 L 24,26" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/></g>
+                  <g class="pkg"><rect x="11" y="13" width="11" height="7" rx="1" fill="#38bdf8"/><path d="M 16.5,13 L 16.5,20" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/></g>
+                  <g class="pkg"><rect x="20" y="12" width="11" height="7" rx="1" fill="#34d399"/><path d="M 25.5,12 L 25.5,19" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/></g>
+                  <g class="pkg"><rect x="14" y="5" width="13" height="8" rx="1" fill="#fb923c"/><path d="M 20.5,5 L 20.5,13" stroke="#fff" stroke-opacity=".7" stroke-width="1.2"/></g>
+                </g>
+
+                <!-- Manija, chasis y malla -->
+                <path class="cart-path" d="M 3,8 L 8,8 L 12,25 L 29,25 L 34,11 L 8,11" stroke-width="2.3" />
+                <path class="cart-path" d="M 12,25 L 14,30 L 27,30 L 29,25" stroke-width="2.1" opacity="0.8" />
+                <path class="cart-path" d="M 14,11 L 16,25" stroke-width="1.2" opacity="0.35" />
+                <path class="cart-path" d="M 21,11 L 21,25" stroke-width="1.2" opacity="0.35" />
+                <path class="cart-path" d="M 28,11 L 26,25" stroke-width="1.2" opacity="0.35" />
+
+                <!-- Ruedas -->
+                <g class="cart-wheel"><circle cx="15" cy="33" r="3.5" class="cart-path" stroke-width="2" /><circle cx="15" cy="33" r="1" fill="#fff" /><line x1="15" y1="30" x2="15" y2="36" stroke="#fff" stroke-width="0.8" opacity="0.6" /></g>
+                <g class="cart-wheel"><circle cx="27" cy="33" r="3.5" class="cart-path" stroke-width="2" /><circle cx="27" cy="33" r="1" fill="#fff" /><line x1="27" y1="30" x2="27" y2="36" stroke="#fff" stroke-width="0.8" opacity="0.6" /></g>
+              </svg>
+            </div>
+
+            <!-- Checkmark SVG para estado de éxito -->
+            <svg class="check-svg" id="checkSvg" viewBox="0 0 24 24">
+              <path d="M 4 12 L 9 17 L 20 6" />
+            </svg>
+
+            <!-- Texto del Botón -->
+            <span class="btn-text" id="btnText">Add to Cart</span>
+
+          </div>
+        </button>
+
+      </div>
+
+      <span class="hint-text">Tap to add</span>
+    </div>
+
+    <!-- Elemento Duplicado de Producto Flotante para Vuelo -->
+    <div class="flying-product" id="flyingProduct">
+      <div class="product-box" style="width:100%; height:100%;">
+        <div class="box-face">
+          <div class="box-ribbon-v"></div>
+          <div class="box-ribbon-h"></div>
+          <div class="box-glow-tag"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Espaciador Inferior -->
+    <div style="height: 20px;"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

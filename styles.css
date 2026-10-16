@@ -1,0 +1,580 @@
+/* ==========================================================================
+   1. VARIABLES Y ESTILOS BASE (DARK PREMIUM SAAS / E-COMMERCE UI)
+   ========================================================================== */
+:root {
+  --bg-dark: #07050e;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --btn-purple: #8b5cf6;
+  --btn-purple-dark: #6d28d9;
+  --btn-glow: rgba(139, 92, 246, 0.55);
+  --aura-glow: rgba(192, 132, 252, 0.85);
+  --accent-cyan: #38bdf8;
+  --accent-cyan-glow: rgba(56, 189, 248, 0.6);
+  --accent-green: #10b981;
+  --text-white: #ffffff;
+  --text-muted: #94a3b8;
+
+  /* Curvas Físicas y Spring Easing */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-anticipate: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: var(--text-white);
+}
+
+/* ==========================================================================
+   2. CONTENEDOR PANTALLA COMPLETA
+   ========================================================================== */
+.viewport-9-16 {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 40%, #1a1033 0%, #07050e 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* Ambient background glow */
+.viewport-9-16::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--btn-purple);
+  filter: blur(200px);
+  opacity: 0.25;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Watermark Codea con Horacio */
+.watermark {
+  text-align: center;
+  z-index: 10;
+  user-select: none;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.watermark .brand {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffffff 0%, var(--accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+.watermark .tagline {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  display: block;
+}
+
+/* ==========================================================================
+   3. TARJETA DE PRODUCTO Y ESCENA CENTRAL
+   ========================================================================== */
+.scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.product-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+
+/* Display de Item del Producto */
+.product-display {
+  width: 140px;
+  height: 140px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 30% 30%, #2e1d52 0%, #130a26 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.product-info {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.product-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: 0.5px;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   4. ESTILOS DEL PRODUCTO 3D ESTILIZADO (CAJA DE REGALO / PAQUETE)
+   ========================================================================== */
+.product-box {
+  width: 68px;
+  height: 68px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.2s var(--ease-smooth);
+}
+
+.box-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5),
+              0 10px 22px rgba(56, 189, 248, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Listón / Cinta del Producto */
+.box-ribbon-v {
+  position: absolute;
+  width: 15px;
+  height: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.box-ribbon-h {
+  position: absolute;
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(90deg, #ffffff 0%, #e2e8f0 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.box-glow-tag {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--btn-purple);
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  top: -5px;
+  right: -5px;
+  box-shadow: 0 0 12px var(--btn-purple);
+}
+
+/* Capa flotante duplicada para la trayectoria del vuelo */
+.flying-product {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.9));
+}
+
+/* ==========================================================================
+   5. BOTÓN PRINCIPAL "ADD TO CART" & CARRITO SVG
+   ========================================================================== */
+.cart-btn {
+  position: relative;
+  width: 280px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--btn-purple) 0%, var(--btn-purple-dark) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 36px;
+  color: var(--text-white);
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 12px 32px -4px var(--btn-glow),
+              inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: width 0.45s var(--ease-smooth),
+              border-radius 0.45s var(--ease-smooth),
+              box-shadow 0.3s ease,
+              transform 0.15s ease,
+              background 0.3s ease;
+}
+
+.cart-btn:hover:not(.disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px -2px var(--btn-glow),
+              0 0 24px rgba(139, 92, 246, 0.5);
+}
+
+.cart-btn.disabled {
+  cursor: default;
+}
+
+.btn-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Wrapper de Carrito SVG */
+.cart-icon-wrapper {
+  position: relative;
+  width: 50px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+.cart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cart-path {
+  stroke: var(--text-white);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s ease;
+}
+
+/* Contador Badge sobre el carrito */
+.cart-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--accent-cyan);
+  color: #07050e;
+  font-size: 0.8rem;
+  font-weight: 900;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px var(--accent-cyan-glow);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.35s var(--ease-spring), opacity 0.2s ease;
+  z-index: 4;
+}
+
+.cart-badge.is-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Flotante "+1" */
+.floating-plus-one {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0) scale(0.6);
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px var(--accent-cyan-glow);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.floating-plus-one.animate {
+  animation: floatPlusOne 0.65s var(--ease-out-back) forwards;
+}
+
+@keyframes floatPlusOne {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px) scale(0.6);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-18px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-34px) scale(0.9);
+  }
+}
+
+/* Texto del Botón */
+.btn-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: opacity 0.25s ease, transform 0.3s var(--ease-smooth);
+}
+
+/* Check SVG oculto por defecto */
+.check-svg {
+  width: 32px;
+  height: 32px;
+  display: none;
+  stroke: var(--text-white);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  z-index: 3;
+}
+
+.check-svg path {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+}
+
+.check-svg.draw path {
+  animation: checkDraw 0.4s var(--ease-smooth) forwards;
+}
+
+@keyframes checkDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ==========================================================================
+   6. TRANSFORMACIONES Y FASES DE ANIMACIÓN DEL CARRITO
+   ========================================================================== */
+
+/* Pressing inicial en el botón y desprendimiento del producto */
+.cart-btn.is-pressing {
+  transform: scale(0.95);
+  transition: transform 0.1s ease-out;
+}
+
+.product-box.anticipate {
+  transform: translateY(-8px) scale(1.05);
+  transition: transform 0.12s ease-out;
+}
+
+/* FASE 2: Anticipación sutil del Carrito justo antes del impacto */
+.cart-icon-wrapper.prepare-impact {
+  transform: translateY(2px) rotate(-3deg) scale(0.96);
+  transition: transform 0.08s ease-out;
+}
+
+/* FASE 3: Impacto físico con compresión, overshoot y estabilización */
+.cart-icon-wrapper.impact {
+  animation: cartPhysicalImpact 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cartPhysicalImpact {
+  0% {
+    transform: translateY(2px) rotate(-3deg) scale(0.96);
+  }
+  25% {
+    /* Compresión inicial del peso */
+    transform: translateY(4px) rotate(-3deg) scale(0.92);
+  }
+  50% {
+    /* Overshoot y recuperación */
+    transform: translateY(-2px) rotate(4deg) scale(1.06);
+  }
+  75% {
+    /* Pequeña amortiguación final */
+    transform: translateY(1px) rotate(-1deg) scale(0.98);
+  }
+  100% {
+    /* Estabilización neutra */
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+/* Destello / Sparkle en Impacto */
+.impact-glow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, var(--accent-cyan) 0%, rgba(56, 189, 248, 0) 70%);
+  border-radius: 50%;
+  top: -8px;
+  left: -4px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.impact-glow.active {
+  animation: glowBurst 0.35s ease-out forwards;
+}
+
+@keyframes glowBurst {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 0.9; transform: scale(1.4); }
+  100% { opacity: 0; transform: scale(1.8); }
+}
+
+/* Partículas de Impacto */
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 8px var(--accent-cyan);
+  opacity: 0;
+}
+
+/* Transformación a Círculo y Confirmación */
+.cart-btn.is-circle {
+  width: 72px;
+  border-radius: 50%;
+  box-shadow: 0 10px 28px var(--btn-glow);
+}
+
+.cart-btn.is-circle .cart-icon-wrapper,
+.cart-btn.is-circle .btn-text {
+  display: none !important;
+}
+
+.cart-btn.is-circle .check-svg {
+  display: block;
+}
+
+/* Anillo Aura 360° */
+.aura-ring {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #ffffff;
+  border-right-color: var(--accent-cyan);
+  border-bottom-color: var(--btn-purple);
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 28px var(--aura-glow);
+  z-index: 1;
+}
+
+.cart-btn.is-aura-active .aura-ring {
+  animation: auraSpin360 0.65s var(--ease-smooth) forwards;
+}
+
+@keyframes auraSpin360 {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.85);
+  }
+  30% { opacity: 1; }
+  80% { opacity: 1; }
+  100% {
+    opacity: 0;
+    transform: rotate(360deg) scale(1.22);
+  }
+}
+
+.cart-btn.is-pulsing {
+  animation: btnPulse 0.65s var(--ease-smooth);
+}
+
+@keyframes btnPulse {
+  0% { transform: scale(1); }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.8), 0 0 25px var(--accent-cyan);
+  }
+  100% { transform: scale(1); }
+}
+
+/* Estado de Éxito / Confirmación Extendida */
+.cart-btn.is-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 10px 28px -4px rgba(16, 185, 129, 0.55),
+              inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== HÍBRIDO: ruedas y paquetes de colores apilables ===== */
+.cart-wheel { transform-box: fill-box; transform-origin: center; }
+.cart-icon-wrapper.wheels-spin .cart-wheel { animation: spinWheels 0.6s var(--ease-smooth); }
+@keyframes spinWheels { to { transform: rotate(360deg); } }
+
+.pkg { opacity: 0; transform-box: fill-box; transform-origin: center bottom; }
+.pkg.on { opacity: 1; }
+
+.cart-icon-wrapper.pop-in { animation: cartReturn 0.45s var(--ease-spring); }
+@keyframes cartReturn { from { transform: scale(0.6); } to { transform: scale(1); } }
+
+.hint-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-top: 25px;
+  user-select: none;
+}
